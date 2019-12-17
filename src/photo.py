@@ -1,9 +1,9 @@
 import glob
 import cv2
 import numpy as np
-from costants import BATCH_SIZE
-
-
+from src.costants import BATCH_SIZE
+from flask import request
+import os
 
 
 #Funcion generadora para la NN
@@ -51,3 +51,12 @@ def createtest(path,limit=1):
                 img_data_list = img_data_list.astype('float32')
                 img_data_list = img_data_list/255
                 return img_data_list,names
+
+def uploadimg():
+    os.chdir('test/')
+    upload    = request.files.get('upload')
+    name, ext = os.path.splitext(upload.filename)
+    if ext not in ('.png','.jpg','.jpeg'):
+        return 'Error'
+    upload.save(f'upload{ext}',overwrite=True) # appends upload.filename automatically
+    return f'test/upload{ext}'
