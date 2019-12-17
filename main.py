@@ -18,7 +18,6 @@ def upload_view():
 def upload_pthoto():
     img_path = uploadimg()
     if img_path == 'Error':
-        print('-----------------------')
         return '<h1>File extension not allowed.<h1/>'
     return 'ok!'
 

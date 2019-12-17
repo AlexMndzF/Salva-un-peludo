@@ -60,3 +60,7 @@ model = autoencoder.fit_generator(generator=X_train,
                                   callbacks=callbacks_list
                                   )
 
+
+model = build_autoencoder()
+model.load_weights('../Encoder_81.h5')
+
