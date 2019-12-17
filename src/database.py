@@ -1,9 +1,10 @@
 import pymongo
 from src.photo import createtest
-from src.NN import model
+from src.NN import encoder 
+import numpy as np
+from src.mongo import coll
 
-
-
+model = encoder
 
 def load_database(path,limit):
     vector,names = createtest(path,limit)
@@ -18,3 +19,15 @@ def load_database(path,limit):
         }
         list_db.append(new_dog)
     return list_db
+
+def get_vectors_names(): 
+    '''
+    data: busqueda en la base de datos transformada a lista
+    '''
+    data = list(coll.find({}))
+    vector = []
+    names = []
+    for i in range(len(data)):
+        names.append(data[i].get('name'))
+        vector.append(np.array(data[i].get('vector')))
+    return vector, names

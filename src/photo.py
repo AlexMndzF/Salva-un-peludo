@@ -53,10 +53,23 @@ def createtest(path,limit=1):
                 return img_data_list,names
 
 def uploadimg():
-    os.chdir('test/')
+    if os.chdir!='test/':
+        os.chdir('test/')
     upload    = request.files.get('upload')
     name, ext = os.path.splitext(upload.filename)
     if ext not in ('.png','.jpg','.jpeg'):
         return 'Error'
-    upload.save(f'upload{ext}',overwrite=True) # appends upload.filename automatically
-    return f'test/upload{ext}'
+    upload.save(f'upload.jpg') # appends upload.filename automatically
+    return f'src/test/upload.jpg'
+
+def get_image_person(path='../test/upload.jpg'):
+    print('-------------->>>>___',path)
+    img_data_list=[]
+    input_img=cv2.imread(path)
+    print(input_img)
+    input_img_resize=cv2.resize(input_img,(220,220))
+    img_data_list.append(input_img_resize)
+    img_data_list = np.array(img_data_list)
+    img_data_list = img_data_list.astype('float32')
+    img_data_list = img_data_list/255
+    return img_data_list

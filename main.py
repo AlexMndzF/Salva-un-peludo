@@ -2,6 +2,8 @@
 import os
 from flask import Flask,render_template
 from src.photo import uploadimg
+from src.database import get_vectors_names
+from src.recomender import recomender
 
 api = Flask(__name__)
 
@@ -19,7 +21,13 @@ def upload_pthoto():
     img_path = uploadimg()
     if img_path == 'Error':
         return '<h1>File extension not allowed.<h1/>'
-    return 'ok!'
+    vector,names = get_vectors_names()
+    result = recomender(vector,names)
+    result
+    os.chdir('../')
+    image = result
+    return render_template('uploaded.html', image=image)
+    
 
 
 if __name__ == "__main__":

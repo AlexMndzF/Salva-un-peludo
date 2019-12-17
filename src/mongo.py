@@ -12,4 +12,16 @@ def connectCollection(database, collection):
     coll = db[collection]
     return db, coll
 
-db,coll=connectCollection(findyourdog, dogs)
+db,coll=connectCollection('findyourdog', 'dogs')
+
+
+def mongo_add(documents):
+    '''
+    documents: list of dicts to ad to the db
+    '''
+    for i in range(len(documents)):
+        coll.insert_one(documents[i])
+    
+def get_image(recomend_name):
+    image = list(coll.find({'name':f'{recomend_name}'}))[0].get('url')
+    return image
