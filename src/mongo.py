@@ -21,6 +21,8 @@ def mongo_add(documents):
     '''
     for i in range(len(documents)):
         coll.insert_one(documents[i])
+        name = documents[i].get('name')
+        print(f'=======>Added {name}<=======')
     
 def get_image(recomend_name):
     image = list(coll.find({'name':f'{recomend_name}'}))[0].get('url')

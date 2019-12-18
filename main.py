@@ -5,6 +5,7 @@ from src.photo import uploadimg
 from src.database import get_vectors_names
 from src.recomender import recomender
 from src.database import load_database
+from src.mongo import mongo_add
 
 api = Flask(__name__)
 
@@ -47,8 +48,8 @@ def upload_database():
                 print(f'=========>{image.filename} Upload!<=========')
             else:
                 image_not_save.append(image.filename)
-        list_fotos = load_database('database/')
-        print(list_fotos[0].get('name'))
+        list_pictures = load_database('database/')
+        mongo_add(list_pictures)
         return 'Upload completed.'
     return render_template('private_upload.html')
 
