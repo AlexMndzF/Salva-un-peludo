@@ -5,6 +5,7 @@
     font-weight: 100;
     font-style: normal; 
     font-weight: normal; 
+    text-align: center;
 }
 body {
     padding: 100px 0;
@@ -19,7 +20,7 @@ h1 {
 
 .title_up {
     margin-bottom: 120px;
-    font-size: 145px; 
+    font-size: 135px; 
     line-height: 96px; 
     text-align: center; 
     color: #000000; 
@@ -34,7 +35,7 @@ h1 {
     text-align: center;
 }
 .text_desc{
-    font-size: 25px; 
+    font-size: 20px; 
     color: #000000;
 }
 
@@ -85,6 +86,9 @@ h1 {
     margin: 0 12px;
     transition: background-color 1s, 
                 color 1s;
+    font-family: 'Lobster Two';
+    margin-top: 8px;
+    font-size: 25px;
 }
 .but_red:hover{
     background-color: #C92258;
@@ -112,4 +116,18 @@ h1 {
 .start-view{
     display: flex;
     justify-content: space-evenly
+}
+h3{
+    text-align: center;
+    text-transform: capitalize;
+}
+.gif_error_no_img {
+    width: 333px;
+    /* height: 362px; */
+    border-radius: 30px;
+    display: block;
+    margin: 80px auto;
+}
+.extensions{
+    margin-top: 30px;
 }

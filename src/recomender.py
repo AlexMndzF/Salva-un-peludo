@@ -26,5 +26,6 @@ def recomender(vectors,names):
     df["diffs"] = df["X"].apply(lambda X: np.linalg.norm(X-X_missing))
     results = df.groupby("name").agg({'diffs':'min'}).sort_values(by='diffs')
     #display(results)
-    URL = get_image(results.index[0])
-    return URL
+    URL, name = get_image(results.index[0])
+    name = name.split('_')
+    return URL, name

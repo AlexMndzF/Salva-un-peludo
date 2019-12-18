@@ -24,4 +24,5 @@ def mongo_add(documents):
     
 def get_image(recomend_name):
     image = list(coll.find({'name':f'{recomend_name}'}))[0].get('url')
-    return image
+    name = list(coll.find({'name':f'{recomend_name}'}))[0].get('name')
+    return image,name

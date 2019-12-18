@@ -1,11 +1,15 @@
 #from bottle import route, run, get, post, request, template, static_file
 import os
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 from src.photo import uploadimg
 from src.database import get_vectors_names
 from src.recomender import recomender
+from src.database import load_database
 
 api = Flask(__name__)
+
+cloud_url = os.getenv('CLOUDINARY_URL')
+os.environ['CLOUDINARY_URL'] = cloud_url
 
 @api.route("/")
 def main():
@@ -20,14 +24,33 @@ def upload_view():
 def upload_pthoto():
     img_path = uploadimg()
     if img_path == 'Error':
-        return '<h1>File extension not allowed.<h1/>'
+        #'<h1>File extension not allowed.<h1/>'
+        return render_template('error_invalid_Format.html')
+    elif img_path == 'Error no image':
+        return render_template('error_no_image.html')
     vector,names = get_vectors_names()
-    result = recomender(vector,names)
-    result
-    os.chdir('../')
+    result, name = recomender(vector,names)
+    #os.chdir('../')
     image = result
-    return render_template('uploaded.html', image=image)
-    
+    return render_template('uploaded.html', image=image, name=name[0], aso=name[1] )
+
+@api.route('/asoc', methods=['POST', 'GET'])
+def upload_database():
+    print('=========>Upload Function<=========')
+    image_not_save = []
+    if request.method == 'POST': #and 'photo' in request.files
+        print('=========>Method POST found<=========')
+        for image in request.files.getlist('photos'):
+            name, ext = os.path.splitext(image.filename)
+            if ext in ('.png','.jpg','.jpeg'):
+                image.save(f'database/{image.filename}')
+                print(f'=========>{image.filename} Upload!<=========')
+            else:
+                image_not_save.append(image.filename)
+        list_fotos = load_database('database/')
+        print(list_fotos[0].get('name'))
+        return 'Upload completed.'
+    return render_template('private_upload.html')
 
 
 if __name__ == "__main__":
