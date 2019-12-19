@@ -1,0 +1,15 @@
+Convolutional KERAS.ipynb
+Dogs.zip
+Dogs/
+Models/
+NN-Test.ipynb
+db_or/
+.DS_Store
+Data_train
+.mypy_cache/
+.dmypy.json
+dmypy.json
+__pypackages__/
+.ipynb_checkpoints
+*.ipynb
+__pycache__/

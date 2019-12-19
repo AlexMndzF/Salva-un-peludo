@@ -9,20 +9,30 @@
         <title>Register</title>
     </head>
     <body>
-        <form action="/login" method="POST">
-            <div class="login">
+        <div class="login_button">
+            <a href="/" >🏠</a>
+        </div>
+        <div class="login">
             <h2>Welcome</h2>
-            <div class="form">
-                    <input type="text" value="" placeholder="username" name="username">
-                <label  for="login-name"></label>
-                    <input type="password" class="login-field" value="" placeholder="password" name="pass">
-                <label for="login-pass"></label>
-                    <input type="submit" value="Log in">
-                </form>
-                        <br>
-                        <div>
-                            Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.
-                        </div>
-            </div>
+                    <form  class="form" action="/login" method="POST">
+                                <input type="text" value="" placeholder="username" name="username">
+                                <input type="password" class="login-field" value="" placeholder="password" name="pass">
+                                <input type="submit" value="Log in" class="submit">
+                                <p>Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.</p>
+                    </form>
+                    
+
+        </div>
     </body>
 </html>
+
+
+<!-- 
+<div class="login">
+    <h2>Welcome</h2>
+    <div class="form">
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <input type="submit" value="Sign In" class="submit">
+    </div>
+  </div> -->

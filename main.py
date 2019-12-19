@@ -68,13 +68,13 @@ def log():
 def login():
     login_user = users.find_one({'name' : request.form['username']})
     print('========>',request.form['pass'].encode('utf-8'))
-    print('========>',login_user['password'])
+    print('========>',login_user)
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
             return render_template('private_upload.html')
-            
-    return 'Invalid username/password combination'
+           
+    return  render_template('error_invalid_user.html')
 
 @api.route('/register', methods=['POST', 'GET'])
 def register():
@@ -87,7 +87,7 @@ def register():
             session['username'] = request.form['username']
             return render_template('login.html')
         
-        return 'That username already exists!'
+        return render_template('user_exist.html')
 
     return render_template('register.html')
 @api.route("/logout")

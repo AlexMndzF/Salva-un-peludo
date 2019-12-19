@@ -13,11 +13,17 @@
         <input type="file" name="photos" multiple>
         <input type="submit" value="Submit">
     </form>  -->
+    <div class="login_button">
+        <a href="/logout" >✋</a>
+    </div> 
+    <h1>Sube tus fotos</h1>
+    
     <form class="form_but"  method="POST" enctype="multipart/form-data">
         <label class="but_red" for="file"> <p class="lc">Select files</p></label>
         <input id="file" class="inputfile" type="file" name="photos" multiple />
         <label class="but_red" for="upload"> <p class="lc">Upload</p></label>
         <input class="inputfile" id="upload" type="submit"/>
       </form>
+      <p class = "formats_up">El formato de subida es Nombre_Asociacion, estan admitidas las fotos JPG,PNG y JPEG</p>
 </body>
 </html>
