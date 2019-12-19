@@ -53,8 +53,8 @@ def createtest(path):
 
 def uploadimg():
     upload    = request.files.get('upload')
-    print('==============>',upload)
-    if upload == None:
+    print('==============>UPLOAD',upload.filename)
+    if upload == None or upload.filename == '':
         return 'Error no image'
     name, ext = os.path.splitext(upload.filename)
     if ext not in ('.png','.jpg','.jpeg'):

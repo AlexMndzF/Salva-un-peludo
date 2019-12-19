@@ -13,6 +13,7 @@ def connectCollection(database, collection):
     return db, coll
 
 db,coll=connectCollection('findyourdog', 'dogs')
+db,users=connectCollection('findyourdog', 'users')
 
 
 def mongo_add(documents):
@@ -22,6 +23,7 @@ def mongo_add(documents):
     for i in range(len(documents)):
         coll.insert_one(documents[i])
         name = documents[i].get('name')
+        
         print(f'=======>Added {name}<=======')
     
 def get_image(recomend_name):

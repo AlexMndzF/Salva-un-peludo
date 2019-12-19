@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="static/style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Lobster+Two&display=swap" rel="stylesheet">
+        <title>Register</title>
+    </head>
+    <body>
+        <form action="/login" method="POST">
+            <div class="login">
+            <h2>Welcome</h2>
+            <div class="form">
+                    <input type="text" value="" placeholder="username" name="username">
+                <label  for="login-name"></label>
+                    <input type="password" class="login-field" value="" placeholder="password" name="pass">
+                <label for="login-pass"></label>
+                    <input type="submit" value="Log in">
+                </form>
+                        <br>
+                        <div>
+                            Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.
+                        </div>
+            </div>
+    </body>
+</html>
