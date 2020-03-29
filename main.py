@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 #from bottle import route, run, get, post, request, template, static_file
 import os
 from flask import Flask,render_template, url_for, request, session, redirect
@@ -9,6 +12,8 @@ from src.mongo import mongo_add,users
 import bcrypt
 
 api = Flask(__name__)
+port = int(os.environ.get("PORT", 5000))
+
 
 api.config["SECRET_KEY"]
 cloud_url = os.getenv('CLOUDINARY_URL')
@@ -97,4 +102,4 @@ def logout():
 
 if __name__ == '__main__':
     api.secret_key = 'mysecret'
-    api.run(debug=True)
+    api.run(debug=True,host='0.0.0.0',port=port)

@@ -29,3 +29,12 @@ def recomender(vectors,names):
     URL, name = get_image(results.index[0])
     name = name.split('_')
     return URL, name
+
+
+
+
+
+
+
+
+    
