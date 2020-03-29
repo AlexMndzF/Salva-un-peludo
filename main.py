@@ -72,8 +72,6 @@ def log():
 @api.route('/login', methods=['POST'])
 def login():
     login_user = users.find_one({'name' : request.form['username']})
-    print('========>',request.form['pass'].encode('utf-8'))
-    print('========>',login_user)
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
